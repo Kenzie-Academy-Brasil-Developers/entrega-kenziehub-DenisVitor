@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { StyledButtonDark } from "../../styles/buttons";
 import {
   HeadlineBold,
@@ -9,37 +10,39 @@ import { validation } from "../validatePages/validation";
 import {
   StyledBoard,
   StyledHeadSection,
-  StyledSection,
+  StyledAreaSection,
   StyledTextSection,
 } from "./styleDashboard";
 import { useNavigate } from "react-router-dom";
 
 export function DashboardPage() {
-  const username = JSON.parse(localStorage.getItem("@USER"));
-  const backToLogin = useNavigate();
-  const gotoLogin = () => {
-    backToLogin("/");
-    localStorage.clear();
-  };
+  const userData = JSON.parse(localStorage.getItem("@USER"));
+  const [ user ] = useState([userData]);
+  
+  const goToLogin = useNavigate()
+
+  const logout = () => {
+    goToLogin('/')
+    localStorage.clear()
+  }
+
   validation()
   return (
     <StyledBoard>
       <StyledHeadSection>
         <MainTitle>Kenzie Hub</MainTitle>
-        <StyledButtonDark onClick={gotoLogin}>Sair</StyledButtonDark>
+        <StyledButtonDark onClick={logout}>Sair</StyledButtonDark>
       </StyledHeadSection>
-      <main>
-        <StyledSection>
-          <TitleOne>Olá, {username.name}</TitleOne>
-          <HeadlineBold>{username.course_module}</HeadlineBold>
-        </StyledSection>
+        <StyledAreaSection>
+          <TitleOne>Olá, {user.map(element => element.name)}</TitleOne>
+          <HeadlineBold>{user.map(element => element.course_module)}</HeadlineBold>
+        </StyledAreaSection>
         <StyledTextSection>
           <TitleOne>Que pena! Estamos em desenvolvimento</TitleOne>
           <TextDashboard>
             Nossa aplicação está em desenvolvimento, em breve teremos novidades
           </TextDashboard>
         </StyledTextSection>
-      </main>
     </StyledBoard>
   );
 }

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { StyledInput } from "../../styles/input";
 import {
   Headline,
@@ -7,7 +7,7 @@ import {
   TitleOne,
 } from "../../styles/typography";
 import { StyledButtonGrey, StyledButtonRed } from "../../styles/buttons";
-import { StyledForm, StyledDivision, StyledPage } from "./Styledlogin";
+import { StyledForm, StyledDivision, StyledPage, StyledContainer } from "./Styledlogin";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -15,15 +15,14 @@ import { Apihub } from "../../service/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodErrorMessage } from "../../styles/typography";
 import { LoginSchema } from "./loginValidation";
-import { validation } from "../validatePages/validation";
+
 
 export function LoginPage() {
   const [changeType, setChangeType] = useState("password");
+  
   const [changeBorder, setChangeBorder] = useState("onblur");
 
   const style = { color: "var(--grey-1)", cursor: "pointer" };
-
-  const navToRegister = useNavigate();
 
   const {
     register,
@@ -33,6 +32,7 @@ export function LoginPage() {
   } = useForm({
     resolver: zodResolver(LoginSchema),
   });
+  
 
   const changeTheType = () => {
     if (changeType === "password") {
@@ -41,6 +41,8 @@ export function LoginPage() {
       setChangeType("password");
     }
   };
+
+
   const changeTheBorder = () => {
     if (changeBorder === "onblur") {
       setChangeBorder("onfocus");
@@ -48,6 +50,8 @@ export function LoginPage() {
       setChangeBorder("onblur");
     }
   };
+
+
   const logUser = async (userData) => {
     try {
       const res = await Apihub.post("/sessions", userData);
@@ -59,21 +63,24 @@ export function LoginPage() {
       console.log(error);
     }
   };
+
+
   const logToPage = (logData) => {
     logUser(logData);
     reset();
   };
+
+
   const navToDashboard = useNavigate();
   const goToDashboard = () => {
     navToDashboard("/dashboard");
   };
-  const goToRegister = () => {
-    navToRegister("/register");
-  };
-  validation();
+
+  
   return (
     <StyledPage>
       <MainTitle>Kenzie Hub</MainTitle>
+      <StyledContainer>
       <StyledForm noValidate onSubmit={handleSubmit(logToPage)}>
         <TitleOne textposition="center">Login</TitleOne>
         <label>
@@ -83,10 +90,10 @@ export function LoginPage() {
             type="email"
             placeholder="Seu email"
           />
+        </label>
           {errors.name ? (
             <ZodErrorMessage>{errors.name.message}</ZodErrorMessage>
           ) : null}
-        </label>
         <label>
           <Headline>Senha</Headline>
           <StyledDivision
@@ -106,17 +113,20 @@ export function LoginPage() {
             ) : (
               <BsFillEyeSlashFill onClick={changeTheType} style={style} />
             )}
+          </StyledDivision>
+        </label>
             {errors.password ? (
               <ZodErrorMessage>{errors.password.message}</ZodErrorMessage>
             ) : null}
-          </StyledDivision>
-        </label>
         <StyledButtonRed type="submit">Entrar</StyledButtonRed>
         <HeadlineBold textposition="center">
           Ainda não possui uma conta?
         </HeadlineBold>
-        <StyledButtonGrey onClick={goToRegister}>Cadastre-se</StyledButtonGrey>
       </StyledForm>
+        <StyledButtonGrey>
+          <Link to="/register">Cadastre-se</Link>
+        </StyledButtonGrey>
+      </StyledContainer>
     </StyledPage>
   );
 }

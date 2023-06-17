@@ -9,14 +9,23 @@ export const StyledPage = styled.main`
   background-color: var(--grey-4);
 `;
 
+export const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  background-color: var(--grey-3);
+  gap: 2rem;
+  width: clamp(3rem, 70vw, 27rem);
+  margin-top: 2rem;
+`
+
 export const StyledForm = styled.form`
   display: flex;
-  margin-top: 3rem;
   flex-direction: column;
   gap: 2rem;
   background-color: var(--grey-3);
-  padding: 2rem 1.5rem;
-  width: clamp(3rem, 70vw, 27rem);
+
+
   label {
     display: flex;
     flex-direction: column;

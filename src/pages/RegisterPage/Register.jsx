@@ -19,13 +19,13 @@ import { Apihub } from "../../service/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterSchema } from "./registerValidation";
 import { ZodErrorMessage } from "../../styles/typography";
-import { validation } from "../validatePages/validation";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
 export function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
+  
   const {
     register,
     handleSubmit,
@@ -49,15 +49,18 @@ export function RegisterPage() {
       setIsLoading(false);
     }
   };
+
   const navToLogin = useNavigate();
   const goToLogin = () => {
     navToLogin("/");
   };
+
+  
   const submitUser = (userData) => {
     registerNewUser(userData);
     reset();
   };
-  validation();
+
 
   return (
     <>

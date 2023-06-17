@@ -41,6 +41,11 @@ export const StyledButtonGrey = styled.button`
   &:hover {
     background-color: var(--grey-2);
   }
+  a{
+    text-decoration: none;
+    color: var(--grey-0);
+
+  }
 `;
 export const StyledButtonDark = styled.button`
   height: 40px;
