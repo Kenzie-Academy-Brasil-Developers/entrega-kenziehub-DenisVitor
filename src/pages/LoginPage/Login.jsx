@@ -19,8 +19,8 @@ import { LoginSchema } from "./loginValidation";
 
 export function LoginPage() {
   const [changeType, setChangeType] = useState("password");
-  
   const [changeBorder, setChangeBorder] = useState("onblur");
+  
 
   const style = { color: "var(--grey-1)", cursor: "pointer" };
 
@@ -58,7 +58,7 @@ export function LoginPage() {
       localStorage.setItem("@USER", JSON.stringify(res.data.user));
       localStorage.setItem("@USERID", JSON.stringify(res.data.user.id));
       localStorage.setItem("@TOKEN", JSON.stringify(res.data.token));
-      goToDashboard();
+      goToDashboard(res.data.user.id);
     } catch (error) {
       console.log(error);
     }
@@ -72,8 +72,8 @@ export function LoginPage() {
 
 
   const navToDashboard = useNavigate();
-  const goToDashboard = () => {
-    navToDashboard("/dashboard");
+  const goToDashboard = (id) => {
+    navToDashboard(`/dashboard/${id}`);
   };
 
   

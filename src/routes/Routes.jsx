@@ -8,7 +8,7 @@ export function PageRoutes() {
         <Routes>
             <Route path="/"  element={<LoginPage/>}/>
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/dashboard/:user_id" element={<DashboardPage />} />
         </Routes>
     )
 }
