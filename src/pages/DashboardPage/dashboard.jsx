@@ -54,7 +54,6 @@ export function DashboardPage() {
             Nossa aplicação está em desenvolvimento, em breve teremos novidades
           </TextDashboard>
         </StyledTextSection>
-        <button>pingas</button>
     </StyledBoard>
   );
 }
