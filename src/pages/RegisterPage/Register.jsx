@@ -25,7 +25,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 export function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const {
     register,
     handleSubmit,
@@ -40,11 +40,11 @@ export function RegisterPage() {
     try {
       setIsLoading(true);
       await Apihub.post("/users", registerData);
-      toast.success("Conta criada com sucesso!", {theme: "dark"});
+      toast.success("Conta criada com sucesso!", { theme: "dark" });
       setTimeout(goToLogin, 4000);
     } catch (error) {
       console.log(error);
-      toast.error("Ops! Algo deu errado", {theme: "dark"});
+      toast.error("Ops! Algo deu errado", { theme: "dark" });
     } finally {
       setIsLoading(false);
     }
@@ -55,12 +55,10 @@ export function RegisterPage() {
     navToLogin("/");
   };
 
-  
   const submitUser = (userData) => {
     registerNewUser(userData);
     reset();
   };
-
 
   return (
     <>

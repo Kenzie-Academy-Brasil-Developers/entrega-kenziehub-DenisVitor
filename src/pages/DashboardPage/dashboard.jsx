@@ -23,16 +23,16 @@ export function DashboardPage() {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const userData = await Apihub.get(`/users/${ user_id }`)
+        const userData = await Apihub.get(`/users/${user_id}`);
         setUser({
           name: userData.data.name,
-          course: userData.data.course_module
-        })
+          course: userData.data.course_module,
+        });
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     };
-    getUserData()
+    getUserData();
   }, [user]);
 
   const goToLogin = useNavigate();

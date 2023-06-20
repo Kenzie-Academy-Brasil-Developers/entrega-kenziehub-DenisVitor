@@ -7,7 +7,12 @@ import {
   TitleOne,
 } from "../../styles/typography";
 import { StyledButtonGrey, StyledButtonRed } from "../../styles/buttons";
-import { StyledForm, StyledDivision, StyledPage, StyledContainer } from "./Styledlogin";
+import {
+  StyledForm,
+  StyledDivision,
+  StyledPage,
+  StyledContainer,
+} from "./Styledlogin";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -16,11 +21,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodErrorMessage } from "../../styles/typography";
 import { LoginSchema } from "./loginValidation";
 
-
 export function LoginPage() {
   const [changeType, setChangeType] = useState("password");
   const [changeBorder, setChangeBorder] = useState("onblur");
-  
 
   const style = { color: "var(--grey-1)", cursor: "pointer" };
 
@@ -32,7 +35,6 @@ export function LoginPage() {
   } = useForm({
     resolver: zodResolver(LoginSchema),
   });
-  
 
   const changeTheType = () => {
     if (changeType === "password") {
@@ -42,7 +44,6 @@ export function LoginPage() {
     }
   };
 
-
   const changeTheBorder = () => {
     if (changeBorder === "onblur") {
       setChangeBorder("onfocus");
@@ -50,7 +51,6 @@ export function LoginPage() {
       setChangeBorder("onblur");
     }
   };
-
 
   const logUser = async (userData) => {
     try {
@@ -64,65 +64,62 @@ export function LoginPage() {
     }
   };
 
-
   const logToPage = (logData) => {
     logUser(logData);
     reset();
   };
-
 
   const navToDashboard = useNavigate();
   const goToDashboard = (id) => {
     navToDashboard(`/dashboard/${id}`);
   };
 
-  
   return (
     <StyledPage>
       <MainTitle>Kenzie Hub</MainTitle>
       <StyledContainer>
-      <StyledForm noValidate onSubmit={handleSubmit(logToPage)}>
-        <TitleOne textposition="center">Login</TitleOne>
-        <label>
-          <Headline>Email</Headline>
-          <StyledInput
-            {...register("email")}
-            type="email"
-            placeholder="Seu email"
-          />
-        </label>
+        <StyledForm noValidate onSubmit={handleSubmit(logToPage)}>
+          <TitleOne textposition="center">Login</TitleOne>
+          <label>
+            <Headline>Email</Headline>
+            <StyledInput
+              {...register("email")}
+              type="email"
+              placeholder="Seu email"
+            />
+          </label>
           {errors.name ? (
             <ZodErrorMessage>{errors.name.message}</ZodErrorMessage>
           ) : null}
-        <label>
-          <Headline>Senha</Headline>
-          <StyledDivision
-            onFocus={changeTheBorder}
-            onBlur={changeTheBorder}
-            borderfocus={changeBorder}
-          >
-            <StyledInput
-              {...register("password")}
-              placeholder="Sua senha"
+          <label>
+            <Headline>Senha</Headline>
+            <StyledDivision
               onFocus={changeTheBorder}
               onBlur={changeTheBorder}
-              type={changeType}
-            />
-            {changeType === "password" ? (
-              <BsFillEyeFill onClick={changeTheType} style={style} />
-            ) : (
-              <BsFillEyeSlashFill onClick={changeTheType} style={style} />
-            )}
-          </StyledDivision>
-        </label>
-            {errors.password ? (
-              <ZodErrorMessage>{errors.password.message}</ZodErrorMessage>
-            ) : null}
-        <StyledButtonRed type="submit">Entrar</StyledButtonRed>
-        <HeadlineBold textposition="center">
-          Ainda não possui uma conta?
-        </HeadlineBold>
-      </StyledForm>
+              borderfocus={changeBorder}
+            >
+              <StyledInput
+                {...register("password")}
+                placeholder="Sua senha"
+                onFocus={changeTheBorder}
+                onBlur={changeTheBorder}
+                type={changeType}
+              />
+              {changeType === "password" ? (
+                <BsFillEyeFill onClick={changeTheType} style={style} />
+              ) : (
+                <BsFillEyeSlashFill onClick={changeTheType} style={style} />
+              )}
+            </StyledDivision>
+          </label>
+          {errors.password ? (
+            <ZodErrorMessage>{errors.password.message}</ZodErrorMessage>
+          ) : null}
+          <StyledButtonRed type="submit">Entrar</StyledButtonRed>
+          <HeadlineBold textposition="center">
+            Ainda não possui uma conta?
+          </HeadlineBold>
+        </StyledForm>
         <StyledButtonGrey>
           <Link to="/register">Cadastre-se</Link>
         </StyledButtonGrey>
