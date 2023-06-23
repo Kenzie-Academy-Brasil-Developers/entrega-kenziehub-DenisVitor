@@ -16,4 +16,7 @@ export const StyledInput = styled.input`
   &::placeholder {
     color: #868e96;
   }
+  &:disabled{
+    cursor: not-allowed;
+  }
 `;

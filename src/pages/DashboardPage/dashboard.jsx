@@ -1,48 +1,25 @@
-import { useEffect, useState } from "react";
 import { StyledButtonDark } from "../../styles/buttons";
-import {
-  HeadlineBold,
-  MainTitle,
-  TextDashboard,
-  TitleOne,
-} from "../../styles/typography";
-import { validation } from "../validatePages/validation";
+import { HeadlineBold, MainTitle, TitleOne } from "../../styles/typography";
 import {
   StyledBoard,
   StyledHeadSection,
   StyledAreaSection,
   StyledTextSection,
+  StyledTechsBoard,
 } from "./styleDashboard";
-import { useNavigate, useParams } from "react-router-dom";
-import { Apihub } from "../../service/api";
+import { ProfileData } from "./ProfileData/Profile";
+import { AddNewValue } from "./DasboardModal/Modal";
+import { useContext, useState } from "react";
+import { DashboardContext } from "../../Providers/dashboardContext";
 
 export function DashboardPage() {
-  const [user, setUser] = useState({ name: "", course: "" });
-  const { user_id } = useParams();
+  const [modal, setModal] = useState(false);
+  const { logout, token, user } = useContext(DashboardContext);
 
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const userData = await Apihub.get(`/users/${user_id}`);
-        setUser({
-          name: userData.data.name,
-          course: userData.data.course_module,
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getUserData();
-  }, [user]);
-
-  const goToLogin = useNavigate();
-
-  const logout = () => {
-    goToLogin("/");
-    localStorage.clear();
+  const changeModal = () => {
+    setModal(!modal);
   };
 
-  validation();
   return (
     <StyledBoard>
       <StyledHeadSection>
@@ -54,10 +31,12 @@ export function DashboardPage() {
         <HeadlineBold>{user.course}</HeadlineBold>
       </StyledAreaSection>
       <StyledTextSection>
-        <TitleOne>Que pena! Estamos em desenvolvimento</TitleOne>
-        <TextDashboard>
-          Nossa aplicação está em desenvolvimento, em breve teremos novidades
-        </TextDashboard>
+        <StyledTechsBoard>
+          <TitleOne>Tecnologias</TitleOne>
+          <StyledButtonDark onClick={() => changeModal}>+</StyledButtonDark>
+          <AddNewValue modal={modal} setModal={setModal} />
+        </StyledTechsBoard>
+        <ProfileData token={token} />
       </StyledTextSection>
     </StyledBoard>
   );

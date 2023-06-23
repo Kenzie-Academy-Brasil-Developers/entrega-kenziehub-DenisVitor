@@ -28,7 +28,7 @@ export const TitleTwo = styled.h2`
 export const TitleThree = styled.h3`
   font-family: var(--ff);
   color: var(--grey-0);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 0.8883rem;
   line-height: 1.5rem;
 `;

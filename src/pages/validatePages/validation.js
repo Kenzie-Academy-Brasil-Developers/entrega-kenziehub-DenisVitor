@@ -4,7 +4,7 @@ export function validation() {
     const user = localStorage.getItem("@USER");
     const pageToStay = useNavigate();
     if (!user) {
-      pageToStay("/login");
+      pageToStay("/");
     }
 
 }

@@ -44,3 +44,9 @@ export const StyledTextSection = styled.section`
     width: 50vw;
     gap: 2rem;
 `;
+export const StyledTechsBoard = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`

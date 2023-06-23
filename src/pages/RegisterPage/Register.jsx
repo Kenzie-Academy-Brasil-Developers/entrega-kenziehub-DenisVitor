@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { StyledInput } from "../../styles/input";
 import {
   Headline,
@@ -15,16 +14,15 @@ import {
 } from "./Styledregister";
 import { StyledButtonDark, StyledButtonRed } from "../../styles/buttons";
 import { useForm } from "react-hook-form";
-import { Apihub } from "../../service/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterSchema } from "./registerValidation";
 import { ZodErrorMessage } from "../../styles/typography";
-import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
+import { ToastContainer } from "react-toastify";
+import { useContext } from "react";
+import { LogContext } from "../../Providers/context";
 
 export function RegisterPage() {
-  const [isLoading, setIsLoading] = useState(false);
+  const { registerNewUser, isLoading, goToLogin } = useContext(LogContext);
 
   const {
     register,
@@ -35,25 +33,6 @@ export function RegisterPage() {
   } = useForm({
     resolver: zodResolver(RegisterSchema),
   });
-
-  const registerNewUser = async (registerData) => {
-    try {
-      setIsLoading(true);
-      await Apihub.post("/users", registerData);
-      toast.success("Conta criada com sucesso!", { theme: "dark" });
-      setTimeout(goToLogin, 4000);
-    } catch (error) {
-      console.log(error);
-      toast.error("Ops! Algo deu errado", { theme: "dark" });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const navToLogin = useNavigate();
-  const goToLogin = () => {
-    navToLogin("/");
-  };
 
   const submitUser = (userData) => {
     registerNewUser(userData);
