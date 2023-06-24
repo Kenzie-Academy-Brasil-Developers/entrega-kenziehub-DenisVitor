@@ -13,7 +13,7 @@ import { Headline, TitleTwo } from "../../../../styles/typography";
 import { StyledInput } from "../../../../styles/input";
 import { StyledButtonGrey, StyledButtonRed } from "../../../../styles/buttons";
 
-export function EditModal({ modal, setModal, data }) {
+export function EditModal({ modal, setModal, data, techs, setTechs }) {
   const token = JSON.parse(localStorage.getItem("@TOKEN"));
   const [status, setStatus] = useState(null);
   const modalClose = useRef(null);
@@ -44,6 +44,7 @@ export function EditModal({ modal, setModal, data }) {
   }, []);
 
   const changeValueStatus = (valueData) => {
+    console.log(valueData)
     setStatus({ status: valueData });
   };
 
@@ -54,6 +55,7 @@ export function EditModal({ modal, setModal, data }) {
           Authorization: `Bearer ${token}`,
         },
       });
+      setTechs((techs) => techs.filter((tech) => tech.id !== id));
     } catch (error) {
       console.log(error);
     }
@@ -61,15 +63,25 @@ export function EditModal({ modal, setModal, data }) {
 
   const changeStatus = async (id, status) => {
     try {
-      await Apihub.put(`/users/techs/${id}`, status, {
+      const res = await Apihub.put(`/users/techs/${id}`, status, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      setTechs((techs) =>
+        techs.map((tech) => {
+          if (tech.id === id) {
+            return res.data;
+          } else {
+            return tech;
+          }
+        })
+      );
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <>
       {" "}
@@ -92,10 +104,12 @@ export function EditModal({ modal, setModal, data }) {
                 <StyledProfileSelector
                   onChange={(e) => changeValueStatus(e.target.value)}
                 >
+                  <option className="nullOpt" value="">Selecione um valor</option>
                   <option value="Iniciante">Iniciante</option>
                   <option value="Intermediário">Intermediário</option>
                   <option value="Avançado">Avançado</option>
                 </StyledProfileSelector>
+
               </label>
             </StyledProfileArea>
             <StyledButtonsArea>

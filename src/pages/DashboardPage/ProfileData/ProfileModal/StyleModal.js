@@ -60,6 +60,9 @@ export const StyledProfileSelector = styled.select`
   &:focus {
     border: 1px solid var(--grey-0);
   }
+  .nullOpt{
+    display: none;
+  }
 `
 export const StyledProfileTitle = styled.div`
         display: flex;

@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 export const LogContext = createContext({});
 
-export const LogProvider = ({ children }) => {
+export function LogProvider ({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const navToDashboard = useNavigate();
   const navToLogin = useNavigate();
@@ -30,14 +30,14 @@ export const LogProvider = ({ children }) => {
       const res = await Apihub.post("/sessions", userData);
       localStorage.setItem("@USERID", JSON.stringify(res.data.user.id));
       localStorage.setItem("@TOKEN", JSON.stringify(res.data.token));
-      goToDashboard(res.data.user.id);
+      goToDashboard(res.data.user.id)
     } catch (error) {
       console.log(error);
     }
   };
 
   const goToDashboard = (id) => {
-    navToDashboard(`/dashboard/${id}`);
+    console.log(navToDashboard(`/dashboard/${id}`))
   };
 
   const goToLogin = () => {

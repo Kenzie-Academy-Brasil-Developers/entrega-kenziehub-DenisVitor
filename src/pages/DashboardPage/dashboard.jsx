@@ -33,7 +33,7 @@ export function DashboardPage() {
       <StyledTextSection>
         <StyledTechsBoard>
           <TitleOne>Tecnologias</TitleOne>
-          <StyledButtonDark onClick={() => changeModal}>+</StyledButtonDark>
+          <StyledButtonDark onClick={() => changeModal()}>+</StyledButtonDark>
           <AddNewValue modal={modal} setModal={setModal} />
         </StyledTechsBoard>
         <ProfileData token={token} />

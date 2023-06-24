@@ -26,8 +26,8 @@ export function ProfileData({ token }) {
         console.log(error);
       }
     };
-    getProfileData();
-  }, [techs]);
+    getProfileData()
+  }, [])
 
   return (
     <>
@@ -44,7 +44,7 @@ export function ProfileData({ token }) {
           </StyledItem>
         ))}
       </StyledList>
-      <EditModal data={modalData} setModal={setModal} modal={modal} />
+      <EditModal data={modalData} setModal={setModal} modal={modal} setTechs={setTechs} techs={techs}/>
     </>
   );
 }

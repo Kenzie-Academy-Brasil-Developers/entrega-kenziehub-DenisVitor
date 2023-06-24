@@ -7,12 +7,12 @@ import { PrivateRoutes, PublicRoutes } from "./RoutesProtection/Routes";
 export function PageRoutes() {
   return (
     <Routes>
-      <Route element={<PublicRoutes />}>
+      <Route element={<PublicRoutes/>}>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Route>
       <Route element={<PrivateRoutes />}>
-        <Route path="/dashboard/:user_id" element={<DashboardPage />} />
+        <Route index path="/dashboard/:user_id" element={<DashboardPage />} />
       </Route>
     </Routes>
   );
