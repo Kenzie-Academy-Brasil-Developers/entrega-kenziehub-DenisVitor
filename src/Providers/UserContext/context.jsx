@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Apihub } from "../service/api";
+import { Apihub } from "../../service/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -37,7 +37,8 @@ export function LogProvider ({ children }) {
   };
 
   const goToDashboard = (id) => {
-    console.log(navToDashboard(`/dashboard/${id}`))
+    window.location.reload(false)
+    navToDashboard(`/dashboard/${id}`)
   };
 
   const goToLogin = () => {

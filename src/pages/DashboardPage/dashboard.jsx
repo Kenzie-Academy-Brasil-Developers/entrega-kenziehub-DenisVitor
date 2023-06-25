@@ -9,16 +9,11 @@ import {
 } from "./styleDashboard";
 import { ProfileData } from "./ProfileData/Profile";
 import { AddNewValue } from "./DasboardModal/Modal";
-import { useContext, useState } from "react";
-import { DashboardContext } from "../../Providers/dashboardContext";
+import { useContext } from "react";
+import { DashboardContext } from "../../Providers/TechContext/dashboardContext";
 
 export function DashboardPage() {
-  const [modal, setModal] = useState(false);
-  const { logout, token, user } = useContext(DashboardContext);
-
-  const changeModal = () => {
-    setModal(!modal);
-  };
+  const { logout, user, modal, setModal, changeModal } = useContext(DashboardContext);
 
   return (
     <StyledBoard>
@@ -36,7 +31,7 @@ export function DashboardPage() {
           <StyledButtonDark onClick={() => changeModal()}>+</StyledButtonDark>
           <AddNewValue modal={modal} setModal={setModal} />
         </StyledTechsBoard>
-        <ProfileData token={token} />
+        <ProfileData />
       </StyledTextSection>
     </StyledBoard>
   );

@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Apihub } from "../service/api";
+import { Apihub } from "../../service/api";
 
 export const DashboardContext = createContext({});
 
@@ -10,6 +10,11 @@ export function DashboardProvider({ children })  {
   const [user, setUser] = useState(null);
   const goToLogin = useNavigate();
 
+  const [modal, setModal] = useState(false);
+
+  const changeModal = () => {
+    setModal(!modal);
+  };
 
   useEffect(() => {
     const getUserData = async () => {
@@ -38,7 +43,7 @@ export function DashboardProvider({ children })  {
   };
 
   return (
-    <DashboardContext.Provider value={{ logout, token, user, setUser }}>
+    <DashboardContext.Provider value={{ logout, token, user, setUser, modal, setModal, changeModal }}>
       {children}
     </DashboardContext.Provider>
   );

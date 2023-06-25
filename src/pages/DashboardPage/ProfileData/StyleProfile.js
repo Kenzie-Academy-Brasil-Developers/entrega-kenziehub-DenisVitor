@@ -9,7 +9,7 @@ export const StyledList = styled.ul`
     padding: 1rem 1.7rem;
     border-radius: 8px;
     gap: 1rem;
-    overflow-y: scroll;
+    overflow-y: auto;
 `
 export const StyledItem = styled.li`
     background-color: var(--grey-3);
@@ -22,4 +22,9 @@ export const StyledItem = styled.li`
     font-family: var(--ff);
     color: var(--grey-0);
     border-radius: 8px;
+    transition: 0.2s ease-in-out;
+    &:hover{
+        background-color: var(--grey-1);
+        cursor: pointer;
+    }
 `

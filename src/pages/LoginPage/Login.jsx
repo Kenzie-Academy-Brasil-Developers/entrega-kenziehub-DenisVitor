@@ -19,7 +19,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodErrorMessage } from "../../styles/typography";
 import { LoginSchema } from "./loginValidation";
-import { LogContext } from "../../Providers/context";
+import { LogContext } from "../../Providers/UserContext/context";
 
 export function LoginPage() {
   const [changeType, setChangeType] = useState("password");

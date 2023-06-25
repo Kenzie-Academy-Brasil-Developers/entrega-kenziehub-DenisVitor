@@ -19,7 +19,7 @@ import { RegisterSchema } from "./registerValidation";
 import { ZodErrorMessage } from "../../styles/typography";
 import { ToastContainer } from "react-toastify";
 import { useContext } from "react";
-import { LogContext } from "../../Providers/context";
+import { LogContext } from "../../Providers/UserContext/context";
 
 export function RegisterPage() {
   const { registerNewUser, isLoading, goToLogin } = useContext(LogContext);

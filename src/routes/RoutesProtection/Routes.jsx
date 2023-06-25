@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { DashboardContext } from "../../Providers/dashboardContext";
-import { Navigate, Outlet, useParams } from "react-router-dom";
+import { DashboardContext } from "../../Providers/TechContext/dashboardContext";
+import { Navigate, Outlet } from "react-router-dom";
 
 
 export const PublicRoutes= () => {
   const { user } = useContext(DashboardContext);
-  const {user_id} = useParams();
+  const userID = JSON.parse(localStorage.getItem("@USERID"))
 
-  return !user ? <Outlet /> :  <Navigate to={`/dashboard/${user_id}`} />;
+  return !user ? <Outlet /> :  <Navigate to={`dashboard/${userID}`} />;
 };
 
 export const PrivateRoutes = () => {

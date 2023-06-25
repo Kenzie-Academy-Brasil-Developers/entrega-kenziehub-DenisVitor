@@ -13,7 +13,7 @@ import { Headline, TitleTwo } from "../../../../styles/typography";
 import { StyledInput } from "../../../../styles/input";
 import { StyledButtonGrey, StyledButtonRed } from "../../../../styles/buttons";
 
-export function EditModal({ modal, setModal, data, techs, setTechs }) {
+export function EditModal({ modal, setModal, data, setTechs }) {
   const token = JSON.parse(localStorage.getItem("@TOKEN"));
   const [status, setStatus] = useState(null);
   const modalClose = useRef(null);
@@ -44,7 +44,6 @@ export function EditModal({ modal, setModal, data, techs, setTechs }) {
   }, []);
 
   const changeValueStatus = (valueData) => {
-    console.log(valueData)
     setStatus({ status: valueData });
   };
 
@@ -84,7 +83,6 @@ export function EditModal({ modal, setModal, data, techs, setTechs }) {
 
   return (
     <>
-      {" "}
       {modal ? (
         <StyledOverlayProfile>
           <StyledProfileModal ref={modalClose}>
