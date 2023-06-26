@@ -2,7 +2,8 @@ import { StyledItem, StyledList } from "./StyleProfile";
 import { Headline, TitleTwo } from "../../../styles/typography";
 import { EditModal } from "./ProfileModal/Modal";
 import { useContext } from "react";
-import { ProfileContext } from "../../../Providers/TechContext/profileContext";
+import { ProfileContext } from "../../../Providers/TechContext/TechContextProfile";
+
 
 export function ProfileData() {
   const {techs, setTechs, modal, setModal, changeModal, modalData, setModalData} = useContext(ProfileContext)

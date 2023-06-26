@@ -10,10 +10,11 @@ import {
 import { ProfileData } from "./ProfileData/Profile";
 import { AddNewValue } from "./DasboardModal/Modal";
 import { useContext } from "react";
-import { DashboardContext } from "../../Providers/TechContext/dashboardContext";
+import { TechContext } from "../../Providers/TechContext/TechContext";
+
 
 export function DashboardPage() {
-  const { logout, user, modal, setModal, changeModal } = useContext(DashboardContext);
+  const { logout, user, modal, setModal, changeModal } = useContext(TechContext);
 
   return (
     <StyledBoard>

@@ -19,13 +19,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodErrorMessage } from "../../styles/typography";
 import { LoginSchema } from "./loginValidation";
-import { LogContext } from "../../Providers/UserContext/context";
+import { UserContext } from "../../Providers/UserContext/UserContext";
+
 
 export function LoginPage() {
   const [changeType, setChangeType] = useState("password");
   const [changeBorder, setChangeBorder] = useState("onblur");
   const style = { color: "var(--grey-1)", cursor: "pointer" };
-  const { logUser } = useContext(LogContext);
+  const { logUser } = useContext(UserContext);
 
   const {
     register,

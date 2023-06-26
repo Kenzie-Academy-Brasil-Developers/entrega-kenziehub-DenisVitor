@@ -4,9 +4,9 @@ import { Apihub } from "../../service/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
-export const LogContext = createContext({});
+export const UserContext = createContext({});
 
-export function LogProvider ({ children }) {
+export function UserProvider ({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const navToDashboard = useNavigate();
   const navToLogin = useNavigate();
@@ -46,10 +46,10 @@ export function LogProvider ({ children }) {
   };
 
   return (
-    <LogContext.Provider
+    <UserContext.Provider
       value={{ logUser, registerNewUser, isLoading, goToLogin }}
     >
       {children}
-    </LogContext.Provider>
+    </UserContext.Provider>
   );
 };

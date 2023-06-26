@@ -2,9 +2,9 @@ import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Apihub } from "../../service/api";
 
-export const DashboardContext = createContext({});
+export const TechContext = createContext({});
 
-export function DashboardProvider({ children })  {
+export function TechProvider({ children })  {
   const token = JSON.parse(localStorage.getItem("@TOKEN"));
   const userID = JSON.parse(localStorage.getItem("@USERID"));
   const [user, setUser] = useState(null);
@@ -43,8 +43,8 @@ export function DashboardProvider({ children })  {
   };
 
   return (
-    <DashboardContext.Provider value={{ logout, token, user, setUser, modal, setModal, changeModal }}>
+    <TechContext.Provider value={{ logout, token, user, setUser, modal, setModal, changeModal }}>
       {children}
-    </DashboardContext.Provider>
+    </TechContext.Provider>
   );
 };
