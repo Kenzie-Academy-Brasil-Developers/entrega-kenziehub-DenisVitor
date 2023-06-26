@@ -35,16 +35,21 @@ export const StyledButtonGrey = styled.button`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0rem 1.3959rem;
+  text-align: center;
   gap: 0.6344rem;
   background-color: var(--grey-1);
   &:hover {
     background-color: var(--grey-2);
   }
   a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     color: var(--grey-0);
-
+    width: 100%;
+    height: 100%;
+    text-align: center;
   }
 `;
 export const StyledButtonDark = styled.button`
