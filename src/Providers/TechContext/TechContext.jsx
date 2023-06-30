@@ -4,7 +4,7 @@ import { Apihub } from "../../service/api";
 
 export const TechContext = createContext({});
 
-export function TechProvider({ children })  {
+export const TechProvider = ({ children }) => {
   const token = JSON.parse(localStorage.getItem("@TOKEN"));
   const userID = JSON.parse(localStorage.getItem("@USERID"));
   const [user, setUser] = useState(null);

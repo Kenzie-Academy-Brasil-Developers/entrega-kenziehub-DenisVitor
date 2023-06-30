@@ -13,7 +13,7 @@ import { useContext } from "react";
 import { TechContext } from "../../Providers/TechContext/TechContext";
 
 
-export function DashboardPage() {
+export const DashboardPage = () => {
   const { logout, user, modal, setModal, changeModal } = useContext(TechContext);
 
   return (

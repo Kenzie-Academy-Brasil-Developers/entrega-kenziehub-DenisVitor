@@ -22,7 +22,7 @@ import { LoginSchema } from "./loginValidation";
 import { UserContext } from "../../Providers/UserContext/UserContext";
 
 
-export function LoginPage() {
+export const LoginPage = () => {
   const [changeType, setChangeType] = useState("password");
   const [changeBorder, setChangeBorder] = useState("onblur");
   const style = { color: "var(--grey-1)", cursor: "pointer" };

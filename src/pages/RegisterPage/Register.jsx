@@ -22,7 +22,7 @@ import { useContext } from "react";
 import { UserContext } from "../../Providers/UserContext/UserContext";
 
 
-export function RegisterPage() {
+export const RegisterPage = () => {
   const { registerNewUser, isLoading, goToLogin } = useContext(UserContext);
 
   const {

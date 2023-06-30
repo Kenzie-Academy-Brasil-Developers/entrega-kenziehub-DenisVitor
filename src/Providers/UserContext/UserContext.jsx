@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 export const UserContext = createContext({});
 
-export function UserProvider ({ children }) {
+export const UserProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const navToDashboard = useNavigate();
   const navToLogin = useNavigate();

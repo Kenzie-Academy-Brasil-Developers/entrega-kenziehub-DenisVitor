@@ -3,7 +3,7 @@ import { Apihub } from "../../service/api";
 
 export const ProfileContext = createContext({})
 
-export function ProfileProvider({children}){
+export const ProfileProvider = ({children}) => {
     const token = JSON.parse(localStorage.getItem("@TOKEN"))
     const userID = JSON.parse(localStorage.getItem("@USERID"))
     const [techs, setTechs] = useState([]);

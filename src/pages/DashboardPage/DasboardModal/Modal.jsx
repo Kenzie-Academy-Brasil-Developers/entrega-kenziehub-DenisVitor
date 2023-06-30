@@ -14,7 +14,7 @@ import { Apihub } from "../../../service/api";
 import { useRef, useEffect, useContext } from "react";
 import { ProfileContext } from "../../../Providers/TechContext/TechContextProfile";
 
-export function AddNewValue({ modal, setModal }) {
+export const AddNewValue = ({ modal, setModal }) => {
   const {techs, setTechs} = useContext(ProfileContext)
   const { register, handleSubmit, reset } = useForm();
   const token = JSON.parse(localStorage.getItem("@TOKEN"));

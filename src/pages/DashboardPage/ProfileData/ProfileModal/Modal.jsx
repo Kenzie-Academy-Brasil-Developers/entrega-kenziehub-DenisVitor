@@ -13,7 +13,7 @@ import { Headline, TitleTwo } from "../../../../styles/typography";
 import { StyledInput } from "../../../../styles/input";
 import { StyledButtonGrey, StyledButtonRed } from "../../../../styles/buttons";
 
-export function EditModal({ modal, setModal, data, setTechs }) {
+export const EditModal = ({ modal, setModal, data, setTechs }) => {
   const token = JSON.parse(localStorage.getItem("@TOKEN"));
   const [status, setStatus] = useState(null);
   const modalClose = useRef(null);

@@ -5,9 +5,8 @@ import { useContext } from "react";
 import { ProfileContext } from "../../../Providers/TechContext/TechContextProfile";
 
 
-export function ProfileData() {
+export const ProfileData = () => {
   const {techs, setTechs, modal, setModal, changeModal, modalData, setModalData} = useContext(ProfileContext)
-
   return (
     <>
       <StyledList>

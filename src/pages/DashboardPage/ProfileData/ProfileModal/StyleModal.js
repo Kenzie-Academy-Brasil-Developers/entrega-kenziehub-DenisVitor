@@ -65,7 +65,7 @@ export const StyledProfileSelector = styled.select`
   }
 `
 export const StyledProfileTitle = styled.div`
-        display: flex;
+    display: flex;
     justify-content: space-between;
     padding: 0.7rem 1.5rem;
     background-color: var(--grey-3);

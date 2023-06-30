@@ -4,14 +4,14 @@ import { Navigate, Outlet } from "react-router-dom";
 import { TechContext } from "../../Providers/TechContext/TechContext";
 
 
-export function PublicRoutes(){
+export const PublicRoutes = () =>{
   const { user } = useContext(TechContext);
   const userID = JSON.parse(localStorage.getItem("@USERID"))
 
   return !user ? <Outlet /> :  <Navigate to={`dashboard/${userID}`} />;
 };
 
-export function PrivateRoutes(){
+export const PrivateRoutes = () =>{
   const { user } = useContext(TechContext);
   
   return user ? <Outlet /> :<Navigate to="/" />;
