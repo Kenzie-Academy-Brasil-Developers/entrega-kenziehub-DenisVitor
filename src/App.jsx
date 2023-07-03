@@ -2,7 +2,7 @@ import { PageRoutes } from "./routes/Routes";
 import { GlobalReset } from "./styles/reset";
 import { GlobalVariables } from "./styles/variables";
 
-function App() {
+export const App = () => {
   return (
     <div className="MainPage">
       <GlobalReset />
@@ -12,4 +12,4 @@ function App() {
   );
 }
 
-export default App;
+
