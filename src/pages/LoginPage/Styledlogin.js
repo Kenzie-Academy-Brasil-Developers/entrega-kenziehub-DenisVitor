@@ -4,9 +4,11 @@ export const StyledPage = styled.main`
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   padding: 7vw 0;
-  height: 100vh;
+  height: 100dvh;
   background-color: var(--grey-4);
+  gap: 1rem;
 `;
 
 export const StyledContainer = styled.div`
@@ -16,7 +18,7 @@ export const StyledContainer = styled.div`
   background-color: var(--grey-3);
   gap: 2rem;
   width: clamp(3rem, 70vw, 27rem);
-  margin-top: 2rem;
+
 `
 
 export const StyledForm = styled.form`
@@ -24,8 +26,6 @@ export const StyledForm = styled.form`
   flex-direction: column;
   gap: 2rem;
   background-color: var(--grey-3);
-
-
   label {
     display: flex;
     flex-direction: column;

@@ -1,5 +1,4 @@
 import { useContext } from "react";
-
 import { Navigate, Outlet } from "react-router-dom";
 import { TechContext } from "../../Providers/TechContext/TechContext";
 
